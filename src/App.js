@@ -1,65 +1,12 @@
 import React, { useState } from "react";
 import "./App.css";
+import List from "./compoments/List";
+import Form from "./compoments/Form";
 
 export default function App (){ 
 
-  // let state = {
-  //   todoData: [],
-  //   value : ""
-  // };
-
-  const [todoData, setTodoData] = useState([
-    // {
-    //   id: "1",
-    //   title: "공부하기",
-    //   completed: true
-    // },
-    // {
-    //   id: "2",
-    //   title: "청소하기",
-    //   completed: false
-    // }
-  ]);
- 
+  const [todoData, setTodoData] = useState([]); 
   const [value, setValue] = useState("");
-
-  const btnStyle = {
-    color: "#fff",
-    border: "none",
-    padding: "5px 9px",
-    borderRadius: "30%",
-    cursor: "pointer",
-    float: "right"
-  };
-
-  const listStyle = (completed) => {
-    return {
-      padding: "10px",
-      borderBottom: "1px #ccc dotted",
-      textDecoration: completed ? "line-through" : "none",
-    }
-  };
- 
-  const handleClick = (id) => { 
-    let newTodoData = todoData.filter((data) => data.id !== id);
-    setTodoData(newTodoData)
-    console.log('newToData', newTodoData);
-  };
-
-  const handleChange = (e) => {
-    console.log('e', e.target.value);
-    setValue(e.target.value);
-  };
-
-  const handleCompChange = (id) => { 
-    let newToData = todoData.map((data) => {
-      if (data.id === id) {
-        data.completed = !data.completed;
-      }
-      return data;
-    });
-    setTodoData(newToData);
-  };
 
   const handleSubmit = (e) => { 
     //form 안에 input 전송시 페이지 리로드 방지
@@ -85,29 +32,9 @@ export default function App (){
           <h1>할 일 목록</h1>
         </div>
 
-        {todoData.map((data) => (
-          <div style={listStyle(data.completed)} key={data.id} >
-            <input type="checkbox"
-              onChange={()=> handleCompChange(data.id)}
-              defaultChecked={data.completed} /> { " "}
-            { data.title } 
-            <button style={btnStyle} onClick={()=>handleClick(data.id)}>x</button>
-          </div>
-        ))}          
-
-        <form style={{ display: 'flex' }} onSubmit={handleSubmit}>
-          <input type="text" name="value" style={{ flex: '10', padding: '5px' }}
-            placeholder="해야 할 일을 입력하세요"
-            value={value}
-            onChange={handleChange}
-          />
-          <input
-            type="submit"
-            value="입력"
-            className="btn"
-            style={{flex: '1'}}
-          />
-        </form>
+        <List todoData={todoData} setTodoData={setTodoData} />
+        <Form handleSubmit={handleSubmit} value={value} setValue={ setValue} />
+        
       </div>
     </div>
   )
