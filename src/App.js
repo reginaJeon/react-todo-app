@@ -28,6 +28,11 @@ export default function App (){
   return (
     <div className="container">
       <div className="todoBlock">
+
+<h1 class="text-3xl font-bold underline">
+    Hello world!
+  </h1>
+
         <div className="title">
           <h1>할 일 목록</h1>
         </div>
