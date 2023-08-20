@@ -12,12 +12,6 @@ export const List = React.memo(({id, title, completed, todoData, setTodoData ,pr
         setTodoData(newToData);
     };
 
-    const handleClick = (id) => { 
-        let newTodoData = todoData.filter((data) => data.id !== id);
-        setTodoData(newTodoData)
-        console.log('newToData', newTodoData);
-    };
-    
   return (
     <div
     key={id}

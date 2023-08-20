@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import "./App.css";
 import { Lists } from "./compoments/Lists";
 import Form from "./compoments/Form";
@@ -7,6 +7,14 @@ export default function App (){
   console.log("App component")
   const [todoData, setTodoData] = useState([]); 
   const [value, setValue] = useState("");
+
+    const handleClick = useCallback((id) => { 
+        let newTodoData = todoData.filter((data) => data.id !== id);
+        setTodoData(newTodoData)
+        console.log('newToData', newTodoData);
+    },
+      [todoData]
+    );
 
   const handleSubmit = (e) => { 
     //form 안에 input 전송시 페이지 리로드 방지
