@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import List from "./compoments/List";
+import List from "./compoments/Lists";
 import Form from "./compoments/Form";
 
 export default function App (){ 
