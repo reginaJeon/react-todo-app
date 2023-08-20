@@ -1,10 +1,10 @@
-import { Result } from 'postcss';
+import { result } from 'postcss';
 import React from 'react'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import List from './List';
+import { List } from './List';
 
-export default function Lists({ todoData, setTodoData }) {
-  
+export const Lists = React.memo(({ todoData, setTodoData }) => {
+  console.log("Lists component")
   //   const listStyle = (completed) => {
   //   return {
   //     padding: "10px",
@@ -66,4 +66,4 @@ export default function Lists({ todoData, setTodoData }) {
       </DragDropContext>
     </div>
   )
-}
+})

@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function List({id, title, completed, todoData, setTodoData ,provided, snapshot}) {
-
+export const List = React.memo(({id, title, completed, todoData, setTodoData ,provided, snapshot}) => {
+    console.log("List component")
     const handleCompChange = (id) => { 
         let newToData = todoData.map((data) => {
             if (data.id === id) {
@@ -40,4 +40,4 @@ export default function List({id, title, completed, todoData, setTodoData ,provi
         </div>
     </div>
   )
-}
+})
