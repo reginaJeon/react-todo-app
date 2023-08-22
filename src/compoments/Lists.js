@@ -29,6 +29,7 @@ export const Lists = React.memo(({handleClick, todoData, setTodoData }) => {
     //타겟으로하는 위치에 해당 값을 삽입
     newTodoData.splice(result.destination.index, 0, reorderedItem);
     setTodoData(newTodoData);
+    //localStorage.setItem('todoData',JSON.stringify([newTodoData]));
 
   };
 
